@@ -5,7 +5,7 @@
 '''
 
 specifications = {
-        'number_of_backups': 10,
+        'number_of_backups': 3,
         'source_file_name': "backup.txt",
         'extension': 'txt',
         'prefix': 'backup_',

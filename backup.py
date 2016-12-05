@@ -2,6 +2,14 @@ from settings import *
 import glob, os, datetime
 from shutil import copyfile
 
+def find_oldest_file(rootfolder, extension=".avi"):
+    return min(
+        (os.path.join(dirname, filename)
+        for dirname, dirnames, filenames in os.walk(rootfolder)
+        for filename in filenames
+        if filename.endswith(extension)),
+        key=lambda fn: os.stat(fn).st_mtime)
+
 def backup():
     number_of_backups = specifications["number_of_backups"]
     prefix = specifications["prefix"]
@@ -16,7 +24,6 @@ def backup():
 
     #Check to see if there is a source file in the directory
     pathToFile =  os.path.join( source_dir, source_file )
-    print pathToFile
     if not os.path.isfile( pathToFile ):
         raise ValueError("Source File Not Found")
 
@@ -25,6 +32,11 @@ def backup():
     newFilePath = os.path.join(dest_dir,newFileName)
     copyfile(pathToFile, newFilePath)
 
+    #Check the number of backups. If exceeded, remove oldest.
+    listOfFiles = glob.glob( dest_dir + "/*." + extension)
+    if len(listOfFiles) > number_of_backups:
+        file = find_oldest_file(dest_dir, extension)
+        os.remove(file)
 
 
 if __name__ == '__main__':
