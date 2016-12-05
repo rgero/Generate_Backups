@@ -6,7 +6,9 @@
 
 specifications = {
         'number_of_backups': 10,
+        'source_file_name': "backup.txt",
+        'extension': 'txt',
         'prefix': 'backup_',
-        'source_dir': '',
-        'dest_dir': '',
+        'source_dir': 'C:\\back_up',
+        'dest_dir': 'C:\\back_up_dest',
     }
