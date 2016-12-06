@@ -2,7 +2,7 @@ from settings import *
 import glob, os, datetime
 from shutil import copyfile
 
-def find_oldest_file(rootfolder, extension=".avi"):
+def find_oldest_file(rootfolder, extension=".db"):
     return min(
         (os.path.join(dirname, filename)
         for dirname, dirnames, filenames in os.walk(rootfolder)
