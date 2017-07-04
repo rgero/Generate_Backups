@@ -1,3 +1,5 @@
+# This is written in Python 2.7 but I don't believe it will have any issues running in Python 3.
+
 from settings import *
 import glob, os, datetime
 from shutil import copyfile

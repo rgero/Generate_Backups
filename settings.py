@@ -2,6 +2,8 @@
     Settings.py
     This is where I am going to define the settings for the whole thing.
 
+    Below is an example specifications dictionary.
+
 '''
 
 specifications = {
